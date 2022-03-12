@@ -1,0 +1,206 @@
+<MenuScreen>:
+
+	BoxLayout:
+		orientation: 'vertical'
+		padding: 20
+		spacing: 10
+		canvas.before:
+			Rectangle:
+				pos: self.pos
+				size: self.size
+				source: 'test.jpg'
+		Button:
+			size_hint: .3, .3
+			pos_hint: {'x' : 0.73, 'y': 0.73}
+		    id: btnExit
+		  
+		    background_color: 0, 0, 0, 0
+		    on_press: app.stop()
+			
+			
+		Label:
+			font_size: 30
+			text: 
+			
+			
+
+		Button:
+			size_hint: 0.8, 0.5
+			pos_hint: {'x' : 0.1, 'y': 1}
+			text: 
+			on_press: root.setSett() ;root.manager.current = 'settings'
+			background_normal: 'norm.png'
+        	background_down: 'down.png'
+        	border: 10,10,10,10
+		Button:
+			size_hint: 0.8, 0.5
+			pos_hint: {'x' : 0.1, 'y': 1}
+			text: 
+			background_normal: 'norm1.png'
+        	background_down: 'down1.png'
+        	border: 10,10,10,10
+			on_press:  root.manager.current = 'vopros'
+			
+			
+
+
+<SettingsScreen>:
+
+	BoxLayout:
+		id: textBL
+		orientation: 'vertical'
+		canvas.before:
+			Rectangle:
+				pos: self.pos
+				size: self.size
+				source: 'settings.jpg'
+
+		Button:
+			size_hint: .7, .7
+			pos_hint: {'x' : 0.8, 'y': 0.7}
+			text: 
+			background_color: 0, 0, 0, 0
+			on_press: root.manager.current = 'menu'
+
+		Label:
+			
+			font_size: 20
+			text: 
+			
+		Label:
+			id: textL
+			font_name: "Chalk.ttf"
+			font_size: 80
+			text: 
+			
+		Label:
+			
+			font_size: 20
+			text: 
+		Label:
+			id: textW
+			font_size: 80
+			font_name: "Chalk.ttf"
+			text: 
+		Label:
+			
+			font_size: 20
+			text: 
+		Label:
+			id: textLose
+			font_name: "Chalk.ttf"
+			font_size: 80
+			text: 
+		
+		Button:
+			font_size: 40
+			font_name: "Chalk.ttf"
+			text: "СЫГРАТЬ ЕЩЕ РАЗ"
+			background_color: 0, 0, 0, 0
+			on_press: root.copyData()
+
+<VoprosScreen>:
+	
+	
+
+	BoxLayout:
+		id: layout
+		orientation: 'vertical'
+		canvas.before:
+			Rectangle:
+				pos: self.pos
+				size: self.size
+				source: 'test2.jpg'
+		Button:
+			size_hint: .7, .7
+			pos_hint: {'x' : 0.8, 'y': 0.7}
+			text: 
+			background_color: 0, 0, 0, 0
+			on_press: root.manager.current = 'menu'
+
+		
+			
+		ProgressBar:
+			id: ostalos 
+        	value: 3
+        	min: 0
+        	max: 3
+        	pos_hint: {'x':.1} 
+        	size_hint_x: .8
+			
+		Button:
+			id: button_one
+			text: 
+			on_press: root.btn_first()
+			background_normal: 'normPlay.png'
+			background_down: 'downPlay.png'
+        		
+        	border: 10,10,10,10
+		
+			
+		
+		
+		
+			
+		Button:
+			id: ansveR
+			text: 
+			background_normal: 'otvetBtnNorm.png'
+        	background_down: 'otvetBtnDown.png'
+        	border: 10,10,10,10
+			on_release: root.callback(); root.sound.stop(); root.scorePlus()
+		Button:
+			id: ansveR1
+			text:
+			background_normal: 'otvetBtnNorm.png'
+        	background_down: 'otvetBtnDown.png'
+        	border: 10,10,10,10
+			on_release: root.callback1(); root.sound.stop()	; root.scorePlus()
+		Button:
+			id: ansveR2
+			text:
+			background_normal: 'otvetBtnNorm.png'
+        	background_down: 'otvetBtnDown.png'
+        	border: 10,10,10,10
+			on_release: root.callback2(); root.sound.stop()	; root.scorePlus()	
+		Button:
+			id: ansveR3
+			text: 
+			background_normal: 'otvetBtnNorm.png'
+        	background_down: 'otvetBtnDown.png'
+        	border: 10,10,10,10
+			on_release: root.callback3(); root.sound.stop(); root.scorePlus()
+
+			
+
+<ScoreScreenW>:
+	score1: score1
+
+	Button:
+		id: score1
+		text: 
+		background_normal: 'pobeda.jpg'
+		background_down: 'pobedaN.jpg'
+		on_press: root.manager.current = 'vopros'
+		
+<ScoreScreenL>:
+	score: score2
+
+	Button:
+		id: score2
+		text: 
+		background_normal: 'porajenie.jpg'
+		background_down: 'porajenieN.jpg'
+		
+		on_press: root.proverkaLose()
+
+<EndGameScreen>:
+
+	Button:
+		background_normal: 'died.jpg'
+		on_press: app.ads.show_interstitial();root.manager.current = 'settings' 
+		
+
+
+
+   
